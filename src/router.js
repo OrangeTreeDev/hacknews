@@ -1,13 +1,15 @@
 import React from 'react';
-import { Router, Route, IndexRoute } from 'dva/router';
-import IndexPage from './routes/IndexPage';
-import Products from './routes/Products';
+import { Router, Route, Redirect, IndexRoute } from 'dva/router';
+import ItemPage from './routes/ItemPage';
+import Test from './routes/Test'
 
-function RouterConfig({ history }) {
+function RouterConfig({app, history}) {
   return (
     <Router history={history}>
-      <Route path="/">
-        <IndexRoute component={IndexPage}></IndexRoute>
+      <Redirect from="/" to='/top' />
+      <Route path="/top">
+        <IndexRoute component={ItemPage}></IndexRoute>
+        <Route path=":page" component={ItemPage}></Route>
       </Route>
     </Router>
   );

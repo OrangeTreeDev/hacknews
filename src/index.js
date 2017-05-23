@@ -4,17 +4,10 @@ import './index.css';
 // 1. Initialize
 const app = dva({
   initialState: {
-    products: [
-      { name: 'dva', id: 1 },
-      { name: 'antd', id: 2 }
-    ]
   }
 });
 
-
-app.model(require('./models/products'));
-app.model(require('./models/example'));
-app.model(require('./models/idx'));
+app.model(require('./models/item'));
 
 // 2. Plugins
 // app.use({});
