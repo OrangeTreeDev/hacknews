@@ -1,1 +1,1 @@
-基于dv前端框架，以及hacknews的firebase接口，实现文章的类型切换以及多页显示
+基于dva前端框架，以及hacknews的firebase接口，实现文章的类型切换以及多页显示
