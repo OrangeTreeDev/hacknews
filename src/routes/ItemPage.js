@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import styles from './ItemPage.less';
 import Menu from '../components/Menu'
 import ItemList from '../components/ItemList';
+import Spinner from '../components/Spinner';
 
 const IndexPage = ({dispatch, item}) => {
 
@@ -10,7 +11,7 @@ const IndexPage = ({dispatch, item}) => {
     <div className={styles.normal}>
       <Menu />
       <ItemList {...item}></ItemList>
-      <input style={ {width: '50px',height:'50px',backgroundColor:'red'} } type="button" onClick={ ()=>{ dispatch({type:'item/fetchItems', playload:'top'})}}/>
+      <Spinner></Spinner>
     </div>
   );
 }

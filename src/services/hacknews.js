@@ -9,9 +9,9 @@ const api = new Firebase('https://hacker-news.firebaseio.com/v0');
 function fetch (location){
   return new Promise( (resolve, reject)=>{
     api.child(location).once('value', (snapshot)=>{
-      let ids = snapshot.val();
-      if( ids ){
-        resolve(ids);
+      let res = snapshot.val();
+      if( res ){
+        resolve(res);
       } else {
         setTimeout( ()=>{
           fetch (location);
@@ -23,6 +23,12 @@ function fetch (location){
 
 export function fetchIdByType( type ){
   return fetch(`${type}stories`);
+}
+
+export function fetchItems(ids){
+  return Promise.all( ids.map( (id) => {
+    return fetchItem(id);
+  }) );
 }
 
 export function fetchItem(id){
