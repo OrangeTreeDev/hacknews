@@ -7,7 +7,9 @@ import styles from './Spinner.less';
 const Spinner = () => {
   return (
     <div>
-      <span className={styles.spinner}></span>
+      <svg className={styles.board}>
+        <circle className={styles.spinner} cx="12" cy="12" r="10"></circle>
+      </svg>
     </div>
   );
 }

@@ -8,6 +8,8 @@ const app = dva({
 });
 
 app.model(require('./models/item'));
+app.model(require('./models/user'));
+
 
 // 2. Plugins
 // app.use({});

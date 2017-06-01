@@ -4,7 +4,7 @@
 import {Link} from 'dva/router';
 import styles from './Item.less';
 
-const Item = ({score,title,hostname,by,timeago,descendants,url })=>{
+const Item = ({ id, type, score,title,hostname,by,timeago,descendants,url })=>{
   return (
     <div className={styles.itemWrapper}>
       <span className={styles.score}>{score}</span>
@@ -12,7 +12,11 @@ const Item = ({score,title,hostname,by,timeago,descendants,url })=>{
         <p className={styles.title}> <a href={url} target="_blank">{title}</a>
           { hostname.length > 0 ? <span className={styles.host}>{` (${hostname})`}</span> : ''}
         </p>
-        <p className={styles.info}>by <Link>{by}</Link> {timeago} ago | <Link>{descendants} comments</Link></p>
+        <div className={styles.info}>
+          { type ==='job'? `${timeago} ago`:
+            <div> by <Link to={`/user/${by}`}>{by}</Link> {timeago} ago | <Link>{descendants} comments</Link></div>
+          }
+        </div>
       </div>
     </div>
   );

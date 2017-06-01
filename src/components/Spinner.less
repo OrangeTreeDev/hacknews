@@ -1,11 +1,27 @@
-.spinner{
+.board{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 25px;
-  height: 25px;
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: 2px solid #FF6500;
-  border-bottom: 5px solid transparent;
+  width: 30px;
+  height: 30px;
 }
+
+.spinner{
+  stroke-width: 2;
+  stroke: #FF6500;
+  stroke-dasharray: 62.8;
+  stroke-dashoffset: 62.8;
+  stroke-linecap: round;
+  fill: none;
+  transform-origin: 50% 50%;
+  transform: rotate(0deg);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin{
+  to{
+    stroke-dashoffset: 0;
+    transform: rotate(360deg);
+  }
+}
+

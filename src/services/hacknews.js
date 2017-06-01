@@ -34,3 +34,7 @@ export function fetchItems(ids){
 export function fetchItem(id){
   return fetch(`item/${id}`);
 }
+
+export function fetchUser(name){
+  return fetch(`user/${name}`);
+}

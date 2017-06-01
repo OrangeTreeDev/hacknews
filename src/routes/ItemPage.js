@@ -11,7 +11,9 @@ const IndexPage = ({dispatch, item}) => {
     <div className={styles.normal}>
       <Menu />
       <ItemList {...item}></ItemList>
-      <Spinner></Spinner>
+      {
+        item.isLoading ? <Spinner></Spinner> : ''
+      }
     </div>
   );
 }

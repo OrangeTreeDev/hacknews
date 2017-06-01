@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Redirect, IndexRoute } from 'dva/router';
 import ItemPage from './routes/ItemPage';
-import Test from './routes/Test'
+import UserPage from './routes/UserPage';
 
 function RouterConfig({app, history}) {
   return (
@@ -11,6 +11,7 @@ function RouterConfig({app, history}) {
         <IndexRoute component={ItemPage}></IndexRoute>
         <Route path=":page" component={ItemPage}></Route>
       </Route>
+      <Route path="/user/:name" component={UserPage}></Route>
     </Router>
   );
 }
