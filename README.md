@@ -3,12 +3,12 @@
 
 # 进度
 - 2017.5.24
-  - 按照`router`/`componet`/`css`/`modle`/`service`分离原则，搭建项目
-  - sagas异步加载hacknews数据，并用react渲染显示。
+  - 按照`router`/`componet`/`css`/`modle`/`service`分离原则，搭建项目
+  - sagas异步加载hacknews数据，并用react渲染显示。
 
 - 2017.5.26
-  - 实现top类型文章的分页显示
+  - 实现top类型文章的分页显示
 
 - 2017.6.1
-  - 实现加载动画
-  - 用户详情页
+  - 实现加载动画
+  - 用户详情页
