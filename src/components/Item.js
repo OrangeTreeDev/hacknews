@@ -1,6 +1,7 @@
 /**
  * Created by hubery on 2017/5/22.
  */
+
 import {Link} from 'dva/router';
 import styles from './Item.less';
 
@@ -14,7 +15,7 @@ const Item = ({ id, type, score,title,hostname,by,timeago,descendants,url })=>{
         </p>
         <div className={styles.info}>
           { type ==='job'? `${timeago} ago`:
-            <div> by <Link to={`/user/${by}`}>{by}</Link> {timeago} ago | <Link>{descendants} comments</Link></div>
+            <div> by <Link to={`/user/${by}`}>{by}</Link> {timeago} ago | <Link to={`/comment/${id}`}>{descendants} comments</Link></div>
           }
         </div>
       </div>

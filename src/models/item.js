@@ -49,15 +49,20 @@ export default {
     * fetchList({playload:{story, page}},{call, put, select}){
       yield put({type:'changeLoadingStatus', playload:true});
 
-      let ids =  yield select( state => state.item.ids );
-      if (ids.length == 0){
+      let oldItem =  yield select( state => state.item );
+      let ids = oldItem.ids;
+      if (ids.length == 0 || oldItem.activeType != story ){
         ids = yield call( fetchIdByType, story );
       }
 
       let maxPage = Math.ceil( ids.length/itemsPer );
-      let activeType = 'top';
+      let activeType = story;
       let slices = ids.slice( (page-1)*itemsPer, page*itemsPer );
       let lists = yield call( fetchItems, slices );
+      let kid = lists[0].kids[0];
+      let kiditem = yield call( fetchItem, kid);
+      console.log(kiditem);
+
       yield put( { type:'saveItems', playload:{ids, page, maxPage, activeType, lists}} );
 
       yield put({type:'changeLoadingStatus', playload:false});
@@ -68,11 +73,11 @@ export default {
     {
       return history.listen( ({pathname})=>{
 
-        let match = pathToRegexp('/top/:page?').exec(pathname);
-        if(match){
-          let page = match[1]==undefined ? 1: match[1];
+        let match = pathToRegexp('/:type/:page?').exec(pathname);
+        if(match && storyTypes.indexOf( match[1] ) > -1 ){
+          let page = ( match[2] == undefined || match == 0 ) ? 1 : match[2];
           page = parseInt(page);
-          dispatch({type:'fetchList', playload:{story:'top',page:page}});
+          dispatch( { type:'fetchList', playload:{ story: match[1] ,page: page } } );
         }
       });
     },
