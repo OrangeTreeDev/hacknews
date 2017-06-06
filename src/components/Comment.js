@@ -4,21 +4,18 @@
 import {Link} from 'dva/router';
 import styles from './Comment.less';
 
-const Comment = () =>{
+const Comment = ({item, children}) =>{
   return (
     <div className={styles.comment}>
       <h5 className={styles.nav}>
-        <Link to={`/user/`}></Link>
-        <span> ago</span>
-        <span>|</span>
-        <span>expand 11 replies</span>
+        <Link to={`/user/${item.by}`}></Link>
+        <span>{item.timeago} ago</span>
+        <span> | </span>
+        <span>expand replies</span>
       </h5>
-      <div className={styles.content}>
-        What good is faster cell data with horrible data
-        limits and an OS with a poor concept of when data is
-        permissible even in the "Enterprise" edition
+      <div className={styles.content} dangerouslySetInnerHTML={ {__html:item.text} }>
       </div>
-      <div className="descendant"></div>
+      <div className={styles.descendant}>{children}</div>
     </div>
   );
 }

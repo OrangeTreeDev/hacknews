@@ -7,22 +7,22 @@ import CommentList from '../components/CommentList';
 import styles from './CommentPage.less';
 
 const CommentPage = ({ dispatch, comment}) => {
-  console.log(comment);
+  console.log(comment.comments);
   return (
     <Layout >
       <div className={styles.commentWrapper}>
         <div className={styles.header}>
           <div>
-            <span className={styles.title}></span>
-            <span className={styles.host}></span>
+            <span className={styles.title}>{comment.title}</span>
+            <span className={styles.host}>{comment.host}</span>
           </div>
           <div className={styles.link}>
-            <span>points</span><span>|</span><span>by</span><span>ago</span>
+            <span>points</span> <span>|</span> <span>by {comment.by}</span> <span>{comment.timeago} ago</span>
           </div>
         </div>
         <div className={styles.body}>
           <div className={styles.title}>164 comments</div>
-          <CommentList></CommentList>
+          <CommentList items={comment.comments}></CommentList>
         </div>
       </div>
     </Layout>
