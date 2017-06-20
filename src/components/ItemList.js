@@ -7,7 +7,7 @@ import {Link} from  'dva/router';
 import Item from './Item';
 
 const ItemList = ({lists, page ,maxPage,activeType}) => {
-  console.log(page);
+
   return (
     <div className={styles.listWrapper}>
       <div className={styles.pageNav}>

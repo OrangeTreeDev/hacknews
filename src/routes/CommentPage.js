@@ -1,32 +1,59 @@
 /**
  * Created by hubery on 2017/6/2.
  */
+
 import {connect} from 'dva';
+
 import Layout from '../components/Layout';
-import CommentList from '../components/CommentList';
+import Comment from '../components/Comment';
+
+import {selectItemById} from '../models/comment/selector';
+import {getHost, timeAgo} from '../utils/tool';
+
 import styles from './CommentPage.less';
 
-const CommentPage = ({ dispatch, comment}) => {
-  console.log(comment.comments);
-  return (
-    <Layout >
-      <div className={styles.commentWrapper}>
-        <div className={styles.header}>
-          <div>
-            <span className={styles.title}>{comment.title}</span>
-            <span className={styles.host}>{comment.host}</span>
+const CommentPage = ({ dispatch, item, itemsById}) => {
+
+  if(item){
+
+    return (
+      <Layout >
+        <div className={styles.commentWrapper}>
+          <div className={styles.header}>
+            <div>
+              <span className={styles.title}>{item.title}</span>
+              <span className={styles.host}>{getHost(item.url)}</span>
+            </div>
+            <div className={styles.link}>
+              <span>points</span> <span>|</span> <span>by { item.by }</span> <span>{ timeAgo(item.time) } ago</span>
+            </div>
           </div>
-          <div className={styles.link}>
-            <span>points</span> <span>|</span> <span>by {comment.by}</span> <span>{comment.timeago} ago</span>
+          <div className={styles.body}>
+            <div className={styles.title}>{item.kids ? `${item.kids.length} Comments` : 'No Comments'}</div>
+            {
+              item.kids ? item.kids.map( (id) => {
+
+                return <Comment key={id} item={ selectItemById( itemsById, id) } itemsByIds={ itemsById }/>;
+              }) : ''
+            }
+            <Comment/>
           </div>
         </div>
-        <div className={styles.body}>
-          <div className={styles.title}>164 comments</div>
-          <CommentList items={comment.comments}></CommentList>
-        </div>
-      </div>
-    </Layout>
-  );
+      </Layout>
+    );
+  }else {
+
+    return null;
+  }
+
 }
 
-export default connect( ({comment}) => ({comment}) )( CommentPage );
+function mapStateToProps({comment}, ownProps) {
+
+  return {
+    item: selectItemById(comment.items, ownProps.params.id),
+    itemsById: comment.items
+  };
+}
+
+export default connect( mapStateToProps )( CommentPage );

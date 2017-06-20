@@ -2,6 +2,8 @@
  * Created by hubery on 2017/5/23.
  */
 
+import Url from 'url';
+
 export function timeAgo (past){
   let pastTime = past * 1000;
   let nowTime = (new Date()).getTime();
@@ -29,4 +31,8 @@ export function timeAgo (past){
     }
   }
   return timeAgo;
+}
+
+export function getHost(urlstr) {
+  return urlstr ? Url.parse(urlstr).hostname : '';
 }

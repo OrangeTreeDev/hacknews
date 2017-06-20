@@ -9,7 +9,7 @@ const app = dva({
 
 app.model(require('./models/item'));
 app.model(require('./models/user'));
-app.model(require('./models/comment'));
+app.model( require('./models/comment') );
 
 // 2. Plugins
 // app.use({});

@@ -59,9 +59,6 @@ export default {
       let activeType = story;
       let slices = ids.slice( (page-1)*itemsPer, page*itemsPer );
       let lists = yield call( fetchItems, slices );
-      let kid = lists[0].kids[0];
-      let kiditem = yield call( fetchItem, kid);
-      console.log(kiditem);
 
       yield put( { type:'saveItems', playload:{ids, page, maxPage, activeType, lists}} );
 
@@ -69,6 +66,7 @@ export default {
     },
   },
   subscriptions: {
+
     listSubscription({dispatch, history})
     {
       return history.listen( ({pathname})=>{
