@@ -1,6 +1,17 @@
 # hacknews
 基于dva前端框架，以及hacknews的firebase接口，实现文章的类型切换以及多页显示,参考
 
+# 构建
+
+安装依赖
+```bash
+npm install
+````
+运行开发环境
+```bash
+npm start
+```
+
 # 进度
 - 2017.5.24
   - 按照`router`/`componet`/`css`/`modle`/`service`分离原则，搭建项目
