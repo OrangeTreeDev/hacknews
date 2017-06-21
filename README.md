@@ -1,5 +1,5 @@
 # hacknews
-基于dva前端框架，以及hacknews的firebase接口，实现文章的类型切换以及多页显示,参考
+基于dva(react\react-router\redux-sagas\es6)前端框架，以及hacknews的firebase接口，实现文章的类型切换以及多页显示
 
 # 构建
 
